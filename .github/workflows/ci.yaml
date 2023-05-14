@@ -17,9 +17,6 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: "1.20"
-      - uses: ory/ci/sdk/generate@master
-        with:
-          token: dummy
       - run: |
           wget https://github.com/go-swagger/go-swagger/releases/latest/download/swagger_linux_amd64 -O "$GOPATH/bin/swagger"
           chmod +x "$GOPATH/bin/swagger"
