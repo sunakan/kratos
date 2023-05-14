@@ -134,11 +134,17 @@ sdk: .bin/swagger .bin/ory node_modules
 		-c .schema/openapi/gen.go.yml
 
 	(cd internal/client-go; go mod edit -module github.com/ory/client-go go.mod; rm -rf test api docs)
+	make format
 	echo '--------------'
 	git diff spec/api.json
 	echo '--------------'
 	git diff spec/swagger.json
-	make format
+	echo '--------------'
+	git status
+	echo '--------------'
+	cat spec/api.json
+	echo '--------------'
+	cat spec/swagger.json
 
 .PHONY: quickstart
 quickstart:
