@@ -25,3 +25,13 @@ jobs:
           bash <(curl https://raw.githubusercontent.com/ory/meta/master/install.sh) -b $GOPATH/bin ory
         shell: bash
       - run: make sdk
+      - run: |
+          git add -N . # 新規ファイルを含める
+          if ! git diff --exit-code --quiet
+          then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "Update"
+            git push
+          fi
