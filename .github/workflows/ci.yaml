@@ -3,6 +3,11 @@ on:
   workflow_dispatch:
   push:
 
+permissions:
+  actions: write
+  checks: write
+  contents: write
+
 # Cancel in-progress runs in current workflow.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
